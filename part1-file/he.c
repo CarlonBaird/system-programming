@@ -12,18 +12,18 @@
 #include <limits.h>
 #define _GNU_SOURCE
 
-int main(int argc, char *argv[])
+int main (int argc, char *argv[])
 {
 //check if parameters is three
-	if(argc != 4)
+	if (argc != 4)
 	{
-		printf("parameter error\n");
+		printf ("parameter error\n");
 		return 1;
 	}
 //state start line and end line
 	int staln = 0, endln = 0;
-	staln = atoi(argv[1]);
-	endln = atoi(argv[2]);
+	staln = atoi (argv[1]);
+	endln = atoi (argv[2]);
 
 //accept parameter, no options	
 //	char *filename;
@@ -33,10 +33,10 @@ int main(int argc, char *argv[])
 //	printf("%s \n", filename);
 //open the file into a stream	
 	FILE *stream;
-	stream = fopen(argv[3], "r");
-	if(!stream)
+	stream = fopen (argv[3], "r");
+	if (!stream)
 	{
-		perror("open");
+		perror ("open");
 		return 1;
 	}
 //way 1 to read all file as reading one character each time
@@ -53,11 +53,11 @@ int main(int argc, char *argv[])
 	char buffer[LINE_MAX];
 	int ln = 0;
 	int endless = 0;
-	while(fgets(buffer, LINE_MAX, stream))
+	while (fgets(buffer, LINE_MAX, stream))
 	{
-		if(++ln >= staln && ln <= (endln == 0? ++endless: endln))
-			printf("%d	%s", ln, buffer);
-		else if(ln > endln) 
+		if (++ln >= staln && ln <= (endln == 0? ++endless: endln))
+			printf ("%d	%s", ln, buffer);
+		else if (ln > endln) 
 			break;
 		else
 			continue;
@@ -65,9 +65,9 @@ int main(int argc, char *argv[])
 	
 //	printf("\nthe total character is: %d\n", total_byte);
 
-	if(fclose(stream) == EOF)
-		perror("close error");
-//		fcloseall();
+	if (fclose(stream) == EOF)
+		perror ("close error");
+//		fcloseall ();
 	
 	return 0;
 }

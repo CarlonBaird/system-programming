@@ -14,6 +14,12 @@
 
 int main(int argc, char *argv[])
 {
+//check if parameters is three
+	if(argc != 4)
+	{
+		printf("parameter error\n");
+		return 1;
+	}
 //state start line and end line
 	int staln = 0, endln = 0;
 	staln = atoi(argv[1]);

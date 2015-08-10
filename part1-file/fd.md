@@ -1,8 +1,8 @@
 # System Programming 
 =========================================
-#Buffer I/O
+## Buffer I/O
 ----------------
-** To study C, you should be well aware of low-level of system **
+**To study C, you should be well aware of low-level of system**
 ### User Space
 Differ with those system callers like `open(0`, `read()`, etc, *stream* is 
 in user space, not kernel space. So it can be read and write more fastly.
@@ -29,8 +29,8 @@ They\'re system calls. the readv() reads count segments from the fd into bufdesc
 > #include <sys/uio.h>
 > 
 > struct iovec {
->>		void *iov_base; /* pointer to start of buffer */
->>		size_t iov_len; /* size of buffer in bytes */
+>		void *iov_base; /* pointer to start of buffer */
+>		size_t iov_len; /* size of buffer in bytes */
 >	};
 
 each ivoec structure describes an independent disjoint buffer, which is called *segment*, and a set of segments is called a *vector*. In fact, all I/O inside the Linux Kernel is vectored; read() and write() are implemented ad vectored I/O with a vector of only one segment.

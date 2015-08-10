@@ -26,13 +26,12 @@ warning: setvbuf() should be called after opening the stream but before any othe
 The standard read and write system calls provide *linear I/O*, scatter/gather I/O provides several advantages over linear I/O methods.
 #### readv() and writev() ####
 They\'re system calls. the readv() reads count segments from the fd into bufdescribed by `iov`, and writev() do the writing operation.
-\#include <sys/uio.h>
- 
+<pre> 
  struct iovec {
-		void *iov_base; /\* pointer to start of buffer \*/
-		size_t iov_len; /\* size of buffer in bytes \*/
+		void *iov_base; /* pointer to start of buffer */
+		size_t iov_len; /* size of buffer in bytes */
 	};
-
+</pre>
 each ivoec structure describes an independent disjoint buffer, which is called *segment*, and a set of segments is called a *vector*. In fact, all I/O inside the Linux Kernel is vectored; read() and write() are implemented ad vectored I/O with a vector of only one segment.
 
 #### epoll() ####
